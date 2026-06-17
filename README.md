@@ -29,9 +29,9 @@ Timezone: **Africa/Tunis**.
   after a one-time cold start.
 - Python 3.12.
 
-> **Note on Python:** on this machine the `python` command points at Inkscape's
-> bundled Python (no pip). Use the **`py`** launcher instead, which points at
-> the real `C:\Python312`.
+> **Windows + Python:** use the `py` launcher to create the venv if `python`
+> on your PATH isn't the interpreter you expect. After activating the venv,
+> `python` refers to the venv's interpreter.
 
 ## Setup (one time)
 
@@ -39,13 +39,18 @@ This project uses an isolated virtual environment so its dependencies never
 clash with other Python tools on the machine.
 
 ```powershell
-py -m venv .venv                       # create the venv (uses real Python 3.12)
+py -m venv .venv                       # create the venv (Python 3.12)
 .\.venv\Scripts\Activate.ps1           # activate it (do this each new terminal)
 pip install -r requirements.txt
+.\fetch-tools.ps1                      # download Piper (TTS) + cloudflared (tunnel)
 ```
 
 Once activated, your prompt shows `(.venv)` and you use `python` normally.
 If you prefer not to activate, prefix commands with `.\.venv\Scripts\python`.
+
+You also need [Ollama](https://ollama.com) with `gemma2:9b` pulled, and a
+Google Calendar OAuth `credentials.json` (see the setup section below). The
+voice feature downloads its Whisper model automatically on first run.
 
 ## Run (Phase 1 — conversation)
 
