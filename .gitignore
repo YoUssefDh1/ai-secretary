@@ -1,0 +1,17 @@
+# Secrets — never commit these
+credentials.json
+token.json
+
+# Tools (portable binaries + downloaded voice models)
+cloudflared.exe
+ngrok.exe
+tools/
+
+# Generated audio
+*.wav
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
